@@ -8,6 +8,8 @@ import Content from './Content';
 import createStore from './createStore';
 import { isEmpty } from 'lodash';
 import Provider from './react-redux';
+import { applyMiddleware } from './applyMiddleware';
+import { logger } from 'redux-logger';
 
 const themeStore = {
   themeColor: 'red',
@@ -25,7 +27,8 @@ const ThemeReducer = (state, action) => {
   }
 }
 
-const store = createStore(ThemeReducer);
+const store = applyMiddleware(logger)(createStore)(ThemeReducer);
+// const store = createStore(ThemeReducer);
 
 class Index extends PureComponent {
   render() {
