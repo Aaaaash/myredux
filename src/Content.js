@@ -5,10 +5,13 @@ import { connect } from './react-redux';
 class Content extends PureComponent {
   
   render() {
+    const { isPinging, onFetch } = this.props;
     return (
       <div>
         <p style={{ color: this.props.themeColor }}>React 小书内容</p>
         <ThemeSwitch />
+        <button onClick={onFetch}>fetch</button>
+        {isPinging && <button>加载~~~</button>}
       </div>
     );
   }
@@ -17,7 +20,14 @@ class Content extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     themeColor: state.themeColor,
+    isPinging: state.isPinging,
   }
 };
 
-export default connect(mapStateToProps)(Content);
+const mapDisPatchToProps = (dispatch) => {
+  return {
+    onFetch: () => dispatch({ type: 'FETCH_USER', payload: 'SAKUB' }),
+  }
+};
+
+export default connect(mapStateToProps, mapDisPatchToProps)(Content);

@@ -7,7 +7,10 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.10",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "redux-observable": "^0.16.0",
+    "redux-saga": "^0.15.6",
+    "rxjs": "^5.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
